@@ -25,9 +25,14 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
         <!-- SonarQube -->
         <sonar.host.url>http://localhost:9000</sonar.host.url>
         <sonar.projectKey>tn.esprit:tpFoyer-17</sonar.projectKey>
+
+        <!-- JaCoCo + Sonar integration -->
+        <sonar.coverage.jacoco.xmlReportPaths>${project.reporting.outputDirectory}/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+
         <!-- Nexus -->
         <nexus.url>http://localhost:8081</nexus.url>
     </properties>
@@ -59,14 +64,14 @@
             <optional>true</optional>
         </dependency>
 
-        <!-- MySQL (pour prod) -->
+        <!-- MySQL (prod) -->
         <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
             <scope>runtime</scope>
         </dependency>
 
-        <!-- H2 Database - Ajoutée ici pour les tests -->
+        <!-- H2 pour les tests -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
@@ -123,6 +128,28 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.2.5</version>
+            </plugin>
+
+            <!-- JaCoCo - IMPORTANT pour le coverage -->
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.12</version>
+                <executions>
+                    <execution>
+                        <id>prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
 
             <!-- SonarQube -->
