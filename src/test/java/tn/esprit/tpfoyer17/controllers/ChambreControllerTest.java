@@ -1,5 +1,6 @@
 package tn.esprit.tpfoyer17.controllers;
 
+import org.springframework.test.context.ActiveProfiles;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -8,6 +9,7 @@ import tn.esprit.tpfoyer17.entities.Chambre;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
+@ActiveProfiles("test")
 class ChambreControllerTest {
 
     @Autowired
