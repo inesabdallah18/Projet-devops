@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: app
-        image: localhost:8082/docker-hosted/tpfoyer-17:TAG_PLACEHOLDER   # ← remplacé automatiquement par le pipeline
+        image: 172.30.95.2:8082/docker-hosted/tpfoyer-17:TAG_PLACEHOLDER   # ← remplacé automatiquement par le pipeline
         ports:
         - containerPort: 8080   # port de ton Spring Boot
         resources:
