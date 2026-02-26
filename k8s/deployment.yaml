@@ -16,7 +16,7 @@ spec:
         - name: nexus-pull-secret   # ← AJOUTE CETTE LIGNE ICI
       containers:
       - name: app
-        image: 172.30.95.2:8082/docker-hosted/tpfoyer-17:TAG_PLACEHOLDER
+        image: 172.30.95.2:8082/tpfoyer-17:59
         ports:
         - containerPort: 8080
         resources:
