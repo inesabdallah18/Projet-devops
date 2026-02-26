@@ -12,11 +12,13 @@ spec:
       labels:
         app: tpfoyer
     spec:
+      imagePullSecrets:
+        - name: nexus-pull-secret   # ← AJOUTE CETTE LIGNE ICI
       containers:
       - name: app
-        image: 172.30.95.2:8082/docker-hosted/tpfoyer-17:TAG_PLACEHOLDER   # ← remplacé automatiquement par le pipeline
+        image: 172.30.95.2:8082/docker-hosted/tpfoyer-17:TAG_PLACEHOLDER
         ports:
-        - containerPort: 8080   # port de ton Spring Boot
+        - containerPort: 8080
         resources:
           limits:
             cpu: "500m"
